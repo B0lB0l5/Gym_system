@@ -1,4 +1,4 @@
-# Gym_system
+# Gym_Management_System
 
 This is a simple Gym Management System built with Express.js and Moment.js. The system handles CRUD operations for members and trainers, checks for membership validity, and handles soft deletion of members. Data is stored in JSON files.
 
