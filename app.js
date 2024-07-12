@@ -44,8 +44,10 @@ app.get('/members', (req, res) => {
     if(Object.keys(req.query).length == 0 )
         members == 0 ? res.status(200).json({ message:"there no members to show"}) : res.status(200).json(activeMembers)
     
+    const softMembers = members.filter(member => member.deletionStatus)
+
     if(req.query.info == 'soft')
-        members == 0 ? res.status(200).json({ message:"there no members to show"}) : res.status(200).json(members)
+        members == 0 ? res.status(200).json({ message:"there no members to show"}) : res.status(200).json(softMembers)
 })
 
 // POST members method
