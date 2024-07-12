@@ -35,16 +35,17 @@ app.get('/members', (req, res) => {
         const memberTrainer = trainers.find(trainer => trainer.id == member.trainerId)
         return { ...member, trainer: memberTrainer }
     })
+
     if(req.query.info == 'all')
-        res.status(200).json(members_Trainers)
+        members == 0 ? res.status(200).json({ message:"there no members to show"}) : res.status(200).json(members_Trainers)
     
     const activeMembers = members.filter(member => !member.deletionStatus)
     
     if(Object.keys(req.query).length == 0 )
-        res.status(200).json(activeMembers)
+        members == 0 ? res.status(200).json({ message:"there no members to show"}) : res.status(200).json(activeMembers)
     
     if(req.query.info == 'soft')
-        res.status(200).json(members)
+        members == 0 ? res.status(200).json({ message:"there no members to show"}) : res.status(200).json(members)
 })
 
 // POST members method
@@ -260,4 +261,5 @@ app.get('/trainers/revenues/:id', (req, res) => {
 app.get('*', (req, res) => {
     res.status(404).json({message: 'not found'})
 })
+
 app.listen(port, () => console.log(`app is running on port ${port}...`))
